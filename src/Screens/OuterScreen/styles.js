@@ -7,61 +7,80 @@ import {
   moderateScale,
 } from '../../styles/responsiveSize';
 
-export default StyleSheet.create({
-  header: {
-    color: colors.black,
-    fontSize: moderateScale(24),
-    fontFamily: fontFamily.futuraBtHeavy,
-    textAlign: 'center',
+// export default StyleSheet.create({
+//   outerBox: {
+//     flex: 1,
+//     backgroundColor: colors.themeColor,
+//   },
+//   bottomButton: {
+//     flex: 0.4,
+//     backgroundColor: "white",
+//     alignItems: "center",
+//     paddingVertical: 10,
+    
+//   }
+// });
+
+const styles = StyleSheet.create({
+  topBar: {
+    height: 350,
+    backgroundColor: colors.themeColor,
+    borderBottomRightRadius: 80,
   },
-  txtSmall: {
-    ...commonStyles.mediumFont14,
-    lineHeight: 24,
-    textAlign: 'center',
-    fontFamily: fontFamily.medium,
-    marginTop: moderateScaleVertical(15),
+  heading: {
+    marginTop: 90,
+    color: "blue",
+    fontSize: 65,
+    alignSelf: 'center',
+    fontFamily: "Lato-Black"
   },
-  socialRow:{
+  subhead: {
+    color: colors.backgroundColor,
+    fontSize: 40,
+    marginBottom: 30,
+    alignSelf: 'center',
+    marginTop: 10,
+    fontFamily: "Roboto-Bold"
+  },
+  bodyHead: {
+    color: colors.themeMain,
+    fontSize: 35,
+    marginTop: 40,
+    marginLeft: 15,
+    fontFamily: "Roboto-Bold"
+  },
+  buttonBox: {
+    backgroundColor: colors.themeMain,
+    marginTop: 50,
+    marginHorizontal: 30,
+    paddingVertical: 16,
+    borderRadius: 10,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  horizontalLines: {
+    flex: 0.44,
+    height: 2,
+    backgroundColor: '#555',
+  },
+  orSection: {
+    display: 'flex',
     flexDirection: 'row',
+    marginTop: 25,
     alignItems: 'center',
-    justifyContent: 'center',
   },
-  socialRowBtn:{
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: moderateScaleVertical(40),
-  },
-  hyphen:{
-    width: 20,
-    height: 1,
-    backgroundColor: colors.textGrey,
-    opacity: 0.6,
-  },
-  bottomContainer:{
+    outerBox: {
     flex: 1,
-    justifyContent: 'flex-end',
-    marginBottom: moderateScaleVertical(30),
+    backgroundColor: colors.themeColor,
   },
-  guestBtn:{
-    marginTop: moderateScaleVertical(20),
-    backgroundColor: colors.lightSky,
-    borderWidth: 0,
-  },
-  orText:{
-    ...commonStyles.mediumFont14,
-    lineHeight: 24,
-    textAlign: 'center',
-    fontFamily: fontFamily.medium,
-    opacity: 0.6,
-    marginTop: 0,
-    marginHorizontal: moderateScale(16),
-  },
-  alreadyText:{
-    color: colors.textGreyLight,
-    marginTop: 0,
-  },
-  login:{
-    color: colors.themeColor,
-    fontFamily: fontFamily.futuraBtHeavy,
+  bottomButton: {
+    flex: 0.4,
+    backgroundColor: "white",
+    alignItems: "center",
+    paddingVertical: 10,
+    
   }
 });

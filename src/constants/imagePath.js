@@ -7,8 +7,9 @@ export default {
   back: require('../assets/images/ic_back.png'),
   backWithSquare: require('../assets/images/backWithSquare.png'),
   rightBlue: require('../assets/images/ic_goA.png'),
-  
-  carouselOne: require("../assets/images/carouselOne.jpeg"),
-  carouselTwo: require("../assets/images/carouselTwo.jpeg"),
-  carouselThree: require("../assets/images/carouselThree.jpeg")
+
+  carouselOne: require('../assets/images/carouselOne.jpeg'),
+  carouselTwo: require('../assets/images/carouselTwo.jpeg'),
+  carouselThree: require('../assets/images/carouselThree.jpeg'),
+  homePage: require('../assets/images/homePage.jpg'),
 };
