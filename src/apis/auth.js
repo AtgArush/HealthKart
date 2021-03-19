@@ -11,6 +11,7 @@ export function signup(data = {}) {
     apiPost(SIGNUP, data)
       .then(res => {
         setUserData(res.data);
+
         AsyncStorage.setItem('loggedIn', 'true')
           .then(res => {
             console.log(res);
@@ -31,6 +32,7 @@ export function login(data = {}) {
     apiPost(LOGIN_API, data)
       .then(res => {
         setUserData(res.data);
+
         AsyncStorage.setItem('loggedIn', 'true')
           .then(res => {
             console.log(res);

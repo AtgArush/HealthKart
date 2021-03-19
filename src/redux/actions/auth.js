@@ -7,7 +7,7 @@ import {
 } from '../../config/urls.js';
 const {dispatch} = store;
 
-const saveUserData = (data) => {
+export const saveUserData = data => {
   dispatch({
     type: types.LOGIN,
     payload: data,
@@ -37,6 +37,7 @@ export const login = (data) => {
   return new Promise((resolve, reject) => {
     apiPost(LOGIN_API, data)
       .then((res) => {
+        console.log(res);
         saveUserData(res.data);
         setUserData(res.data).then((suc) => {
           resolve(res);

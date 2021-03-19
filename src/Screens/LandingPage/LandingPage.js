@@ -29,24 +29,39 @@ export default class LandingPage extends Component {
 
 
     _renderItem({item,index}){
-        console.log(item)
-        return (
-          <View style={{
+      // console.log(item)
+      return (
+        <View
+          style={{
             //   backgroundColor:'red',
-              borderRadius: 5,
-              flex: 1,
-              width: "100%",
-              marginTop: 5,
-              justifyContent: "space-between"
-            }}>
-                <Image style = {{width: "150%", height: "65%", marginLeft: "-25%",resizeMode: "contain"}} source = {item.image} />
-                <View>
-                <Text style = {{color: "white", width: "95%", fontSize: 25, textAlign: "center"}}>{item.text}</Text>
-
-                </View>
+            borderRadius: 5,
+            flex: 1,
+            width: '100%',
+            marginTop: 5,
+            justifyContent: 'space-between',
+          }}>
+          <Image
+            style={{
+              width: '150%',
+              height: '65%',
+              marginLeft: '-25%',
+              resizeMode: 'contain',
+            }}
+            source={item.image}
+          />
+          <View>
+            <Text
+              style={{
+                color: 'white',
+                width: '95%',
+                fontSize: 25,
+                textAlign: 'center',
+              }}>
+              {item.text}
+            </Text>
           </View>
-
-        )
+        </View>
+      );
     }
 
     get pagination () {

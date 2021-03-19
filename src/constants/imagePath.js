@@ -12,4 +12,8 @@ export default {
   carouselTwo: require('../assets/images/carouselTwo.jpeg'),
   carouselThree: require('../assets/images/carouselThree.jpeg'),
   homePage: require('../assets/images/homePage.jpg'),
+  heart: require('../assets/images/heart.png'),
+  hamburgerIcon: require('../assets/images/hamburgerIcon.jpeg'),
+  cart: require('../assets/images/cart.jpg'),
+  search: require('../assets/images/search.png'),
 };

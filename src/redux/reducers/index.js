@@ -2,13 +2,13 @@ import { combineReducers } from 'redux';
 import auth from "./auth";
 import appTheme from "./appTheme";
 import types from '../types';
-
+import cart from './cart';
 
 
 const appReducer = combineReducers({
-    auth,
-    appTheme
-
+  auth,
+  appTheme,
+  cart,
 });
 
 const rootReducer = (state, action) => {

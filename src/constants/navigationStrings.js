@@ -1,6 +1,6 @@
 export default {
   LOGIN: 'login',
-  LOGINPASSWORD: "loginpassword",
+  LOGINPASSWORD: 'loginpassword',
   OTP_VERIFICATION: 'otpVerfication',
   OUTER_SCREEN: 'outerScreen',
   SIGN_UP: 'signUp',
@@ -16,5 +16,5 @@ export default {
   SUPERMARKET_PRODUCTS_CATEGORY: 'supermarketProductsCategory',
   PRODUCT_LIST: 'productList',
   LANDING_PAGE: 'landingPage',
-
+  HOME: 'home',
 };

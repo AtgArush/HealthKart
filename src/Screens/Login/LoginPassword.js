@@ -8,15 +8,19 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
-import {login} from '../../apis/auth';
+import api from '../../redux/actions';
+import Loader from '../../Components/Loader';
 import navigationStrings from '../../constants/navigationStrings';
 import colors from '../../styles/colors';
+import {setUserData} from '../../utils/utils';
+
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       password: '',
       login: false,
+      isLoading: false,
     };
   }
   getInputValue = value => {
@@ -30,13 +34,22 @@ export default class Login extends Component {
     if (loginDetail == '') {
       alert('You forgot to enter your password');
     } else {
+      this.setState({isLoading: true});
       // this.props.navigation.navigate(navigationStrings.OTP_VERIFICATION);
-      login({
-        email: this.props.route.params.name,
-        password: this.state.password,
-      })
-        .then(res => console.log(res))
-        .catch(error => console.log(error));
+      api
+        .login({
+            email: this.props.route.params.name,
+            password: this.state.password,
+          })
+        .then(res => {
+          this.setState({isLoading: false});
+          console.log(res);
+          this.props.navigation.navigate(navigationStrings.HOME)
+        })
+        .catch(error => {
+          this.setState({isLoading: false});
+          console.log(error);
+        });
       // AsyncStorage.setItem('loggedIn', 'true')
       //   .then(res => {
       //     this.props.navigation.navigate(navigationStrings.OTP_VERIFICATION);
@@ -49,71 +62,73 @@ export default class Login extends Component {
 
   render() {
     let username = this.props.route.params.name;
-    return (
-      <View style={{flex: 1}}>
-        <View style={styles.topBar}>
-          <View>
-            <Text style={styles.heading}>
-              <Text
-                style={{
-                  paddingVertical: 20,
-                  fontSize: 42,
-                  color: colors.white,
-                }}>
-                HEALT
+    let {isLoading} = this.state;
+      return (
+        <View style={{flex: 1}}>
+          <Loader isLoading={isLoading} />
+          <View style={styles.topBar}>
+            <View>
+              <Text style={styles.heading}>
                 <Text
                   style={{
                     paddingVertical: 20,
-                    backgroundColor: colors.white,
-                    fontSize: 45,
-                    color: colors.themeColor,
+                    fontSize: 42,
+                    color: colors.white,
                   }}>
-                  HK
+                  HEALT
+                  <Text
+                    style={{
+                      paddingVertical: 20,
+                      backgroundColor: colors.white,
+                      fontSize: 45,
+                      color: colors.themeColor,
+                    }}>
+                    HK
+                  </Text>
+                  ART
                 </Text>
-                ART
               </Text>
-            </Text>
-          </View>
-          <View style={{paddingLeft: 15}}>
-            <Text style={styles.headerText}>Hi, {username}</Text>
-            <Text style={[styles.headerText, {marginBottom: 70}]}>
-              Welcome back!!
-            </Text>
-          </View>
-        </View>
-        <View style={{height: 580}}>
-          <TextInput
-            onChangeText={value => this.getInputValue(value)}
-            style={styles.inputField}
-            placeholder="Password"
-          />
-          <View style={styles.forgotPasswordButton}>
-            <Text style={styles.forgotText}>Forgot Password?</Text>
-          </View>
-          <View style={styles.login}>
-            <TouchableOpacity
-              style={{alignItems: 'center'}}
-              onPress={() => this.loginClicked()}>
-              <Text style={styles.loginText}>LOGIN</Text>
-            </TouchableOpacity>
-          </View>
-          <View style={{alignItems: 'center', marginTop: 30}}>
-            <View style={styles.orSection}>
-              <View style={styles.horizontalLines}></View>
-              <Text style={{marginHorizontal: 25}}>OR</Text>
-              <View style={styles.horizontalLines}></View>
+            </View>
+            <View style={{paddingLeft: 15}}>
+              <Text style={styles.headerText}>Hi, {username}</Text>
+              <Text style={[styles.headerText, {marginBottom: 70}]}>
+                Welcome back!!
+              </Text>
             </View>
           </View>
-          <View style={styles.login}>
-            <TouchableOpacity style={{alignItems: 'center'}}>
-              <Text style={styles.loginText}>Use OTP</Text>
-            </TouchableOpacity>
+          <View style={{height: 580}}>
+            <TextInput
+              onChangeText={value => this.getInputValue(value)}
+              style={styles.inputField}
+              placeholder="Password"
+            />
+            <View style={styles.forgotPasswordButton}>
+              <Text style={styles.forgotText}>Forgot Password?</Text>
+            </View>
+            <View style={styles.login}>
+              <TouchableOpacity
+                style={{alignItems: 'center'}}
+                onPress={() => this.loginClicked()}>
+                <Text style={styles.loginText}>LOGIN</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={{alignItems: 'center', marginTop: 30}}>
+              <View style={styles.orSection}>
+                <View style={styles.horizontalLines}></View>
+                <Text style={{marginHorizontal: 25}}>OR</Text>
+                <View style={styles.horizontalLines}></View>
+              </View>
+            </View>
+            <View style={styles.login}>
+              <TouchableOpacity style={{alignItems: 'center'}}>
+                <Text style={styles.loginText}>Use OTP</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
-    );
+      );
+    }
   }
-}
 
 const styles = StyleSheet.create({
   topBar: {

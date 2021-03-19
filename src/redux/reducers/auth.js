@@ -1,10 +1,9 @@
 import types from "../types";
 
 const initial_state = {
-    userData: {},
-    internetConnection: false
-
-}
+  userData: {},
+  internetConnection: false,
+};
 
 export default function (state = initial_state, action) {
 
